@@ -1,3 +1,5 @@
+import 'package:firebase/screens/authenticate/register.dart';
+import 'package:firebase/screens/authenticate/sign_in.dart';
 import 'package:flutter/material.dart';
 
 class Authenticate extends StatefulWidget {
@@ -8,12 +10,16 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
+  bool showSingIn = true;
+
+  void toogle() {
+    setState(() {
+      showSingIn = !showSingIn;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Authenticate'),
-      ),
-    );
+    return showSingIn ? SignIn(toogle: toogle) : Register(toogle: toogle);
   }
 }
